@@ -1,7 +1,7 @@
 
 shinyServer(function(input, output) {
   get.graph<-reactive({
-    make.random.graph(nodes=input$slide_count)
+    make.random.graph(nodes=input$slide_count,con.frac=input$con_frac/100)
   })
   get.layout<-reactive({
     layout.fcns[[input$layout]](get.graph())
