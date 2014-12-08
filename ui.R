@@ -23,6 +23,8 @@ shinyUI(pageWithSidebar(
                sliderInput('scale_noise', 'Scale Jitter (%)', min=0, max=100,value=0),
                sliderInput('angle_noise', 'Angle Jitter (%)', min=0, max=100,value=15)
       ),
+      tabPanel("Slide Positions",
+               dataTableOutput("slide_positions")),
       tabPanel("Source Code",
                h3(textOutput("sourcecode"))
                )

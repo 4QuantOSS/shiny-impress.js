@@ -5,6 +5,7 @@ layout.fcns$Kamada<-layout.kamada.kawai
 layout.fcns$Circle<-layout.circle
 layout.fcns$LGL<-layout.lgl
 layout.fcns$Grid<-layout.grid
+layout.fcns$Grid3D<-layout.grid.3d
 layout.fcns$DRL<-layout.drl
 layout.fcns$Star<-layout.star
 

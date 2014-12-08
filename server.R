@@ -4,16 +4,35 @@ shinyServer(function(input, output) {
     make.random.graph(nodes=input$slide_count,con.frac=input$con_frac/100)
   })
   get.layout<-reactive({
-    layout.fcns[[input$layout]](get.graph())
+    gpos<-layout.fcns[[input$layout]](get.graph())
+    if(ncol(gpos)<3) {
+      cbind(gpos,gpos[,1])
+    } else {
+      gpos
+    }
   })
   get.slides<-reactive({
     slide.names<-V(get.graph())$name
     slide.pos<-get.layout()
+    
     # rough estimate of the scales
     xsc<-input$slide_width*sqrt(input$slide_count)*input$spacing/100
     ysc<-input$slide_height*sqrt(input$slide_count)*input$spacing/100
-    data.frame(x=xsc*slide.pos[,1],
-               y=ysc*slide.pos[,2],
+    # normalize the positions (for the overview slide)
+    pos.nrm<-function(x) {
+      dsx<-diff(range(x))
+      if(dsx>0) {
+        2*(x-min(x))/dsx-1
+      } else {
+        x
+      }
+    }
+    xpos<-xsc*pos.nrm(slide.pos[,1])
+    ypos<-ysc*pos.nrm(slide.pos[,2])
+    zpos<-xsc*pos.nrm(slide.pos[,3])
+    data.frame(x=xpos,
+               y=ypos,
+               z=zpos,
                scale=1+runif(input$slide_count,min=-1,max=1)*input$scale_noise/100,
                angle=runif(input$slide_count,min=-180,max=180)*input$angle_noise/100,
                content=slide.names)
@@ -24,8 +43,13 @@ shinyServer(function(input, output) {
                   height=input$frame_height,
                   slide.width=input$slide_width,
                   slide.height=input$slide_height,
-                  font.size=input$font_size
+                  font.size=input$font_size,
+                  spacing=input$spacing/100
                   )
+  })
+  
+  output$slide_positions<-renderDataTable({
+    get.slides()
   })
 
   output$sourcecode <- renderPrint({
@@ -34,7 +58,8 @@ shinyServer(function(input, output) {
                   height=input$frame_height,
                   slide.width=input$slide_width,
                   slide.height=input$slide_height,
-                  font.size=input$font_size
+                  font.size=input$font_size,
+                  spacing=input$spacing/100
                   )
   })
   

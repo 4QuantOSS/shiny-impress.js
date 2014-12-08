@@ -40,13 +40,18 @@ make.style.text<-function(width=150,height=150,font=48) {
 
 
 # To be called from server.R
-renderImpress <- function(slides.df,use.iframe=T,width="400px", height="400px",slide.width=200,slide.height=200,font.size=24) {
+renderImpress <- function(slides.df,use.iframe=T,width="400px", height="400px",slide.width=200,slide.height=200,font.size=24,spacing=1) {
   slides.data<-lapply(as.list(1:dim(slides.df)[1]), function(x) slides.df[x[1],])
-  slide.fun<-function(x,y,scale,angle,content) 
-    div(class="step slide","data-x"=x,"data-y"=y,
+  slide.fun<-function(x,y,z,scale,angle,content) 
+    div(class="step slide","data-x"=x,"data-y"=y,"data-z"=z,
         "data-rotate"=angle,"data-scale"=scale,
         h2(content),tags$li(tags$ul("Interesting"),tags$ul(content)))
-  slides<-lapply(slides.data,function(cslide) slide.fun(cslide$x,cslide$y,cslide$scale,cslide$angle,cslide$content))  
+  overview.slide<-div(class="step","data-x"=0,"data-y"=0,"data-scale"=spacing*nrow(slides.df))
+  
+  slides<-lapply(slides.data,function(cslide) slide.fun(cslide$x,cslide$y,cslide$z,cslide$scale,cslide$angle,cslide$content))
+  nslides<-list()
+  nslides[[1]]<-overview.slide
+  nslides[c(2:(length(slides)+1))]<-slides
   slides.html<-tags$html(
     tags$body(
       make.style(slide.width,slide.height,font=font.size),
@@ -54,7 +59,7 @@ renderImpress <- function(slides.df,use.iframe=T,width="400px", height="400px",s
       tags$script(src="https://jmpressjs.github.io/jmpress.js/dist/jmpress.all.min.js")
       ,
       div(id="impress",
-          slides
+          nslides
       ),
       tags$script("$(function() {
                   $('#impress').jmpress();
