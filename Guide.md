@@ -8,6 +8,17 @@ To get started you setup the size and number of slides involved using the left p
 
 ### Slides
 Shows the presentation itself in an iframe. Some browsers do not like this, in which case just use the source in the last panel.
+- Standard View 
+
+![Grid3D](Overview.png)
+
+- Sphere Layout
+![Sphere](Sphere.png)
+
+- Circular Layout
+
+![Circle](Circle.png)
+
 
 ### Slide Positions
 The positions and details for the slides positioned based on the graph.
