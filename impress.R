@@ -1,8 +1,5 @@
 library(shiny)
 
-make.slide<-function(x,y,scale,angle,content="Hello") 
-  paste('<div class="step slide" data-x="',x,'" data-y="',y,'" data-rotate="',angle,'" data-scale="',scale,'"><q>',content,'</q></div>')
-
 make.style<-function(...) tags$style(make.style.text(...))
 
 make.style.text<-function(width=150,height=150,font=48) {
@@ -45,13 +42,16 @@ make.style.text<-function(width=150,height=150,font=48) {
 # To be called from server.R
 renderImpress <- function(slides.df,use.iframe=T,width="400px", height="400px",slide.width=200,slide.height=200,font.size=24) {
   slides.data<-lapply(as.list(1:dim(slides.df)[1]), function(x) slides.df[x[1],])
-  slide.fun<-function(x,y,scale,angle,content) div(class="step slide","data-x"=x,"data-y"=y,"data-rotate"=angle,"data-scale"=scale,h2(content))
+  slide.fun<-function(x,y,scale,angle,content) 
+    div(class="step slide","data-x"=x,"data-y"=y,
+        "data-rotate"=angle,"data-scale"=scale,
+        h2(content),tags$li(tags$ul("Interesting"),tags$ul(content)))
   slides<-lapply(slides.data,function(cslide) slide.fun(cslide$x,cslide$y,cslide$scale,cslide$angle,cslide$content))  
   slides.html<-tags$html(
     tags$body(
       make.style(slide.width,slide.height,font=font.size),
-      tags$script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"),
-      tags$script(src="http://jmpressjs.github.io/jmpress.js/dist/jmpress.all.min.js")
+      tags$script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"),
+      tags$script(src="https://jmpressjs.github.io/jmpress.js/dist/jmpress.all.min.js")
       ,
       div(id="impress",
           slides

@@ -10,11 +10,13 @@ shinyServer(function(input, output) {
     slide.names<-V(get.graph())$name
     slide.pos<-get.layout()
     # rough estimate of the scales
-    xsc<-input$slide_width*sqrt(input$slide_count)
-    ysc<-input$slide_height*sqrt(input$slide_count)
-    data.frame(x=xsc*slide.pos[,1],y=ysc*slide.pos[,2],
-                          scale=1,angle=0,
-                          content=slide.names)
+    xsc<-input$slide_width*sqrt(input$slide_count)*input$spacing/100
+    ysc<-input$slide_height*sqrt(input$slide_count)*input$spacing/100
+    data.frame(x=xsc*slide.pos[,1],
+               y=ysc*slide.pos[,2],
+               scale=1+runif(input$slide_count,min=-1,max=1)*input$scale_noise/100,
+               angle=runif(input$slide_count,min=-180,max=180)*input$angle_noise/100,
+               content=slide.names)
   })
   output$preview <- renderUI({
     renderImpress(get.slides(),use.iframe=T,
