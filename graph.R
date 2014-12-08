@@ -1,12 +1,18 @@
 library(igraph)
 
 layout.fcns<-new.env()
+layout.fcns$Auto<-layout.auto
+layout.fcns$Random<-layout.random
+layout.fcns$SVD<-layout.svd
+layout.fcns$Sphere<-layout.sphere
+layout.fcns$Spring<-layout.spring
 layout.fcns$Kamada<-layout.kamada.kawai
 layout.fcns$Circle<-layout.circle
 layout.fcns$LGL<-layout.lgl
 layout.fcns$Grid<-layout.grid
 layout.fcns$Grid3D<-layout.grid.3d
 layout.fcns$DRL<-layout.drl
+layout.fcns$MDS<-layout.mds
 layout.fcns$Star<-layout.star
 
 draw.graph<-function(g,layout.fcn) {
@@ -15,7 +21,9 @@ draw.graph<-function(g,layout.fcn) {
 
 make.random.graph<-function(nodes=10,con.frac=0.5) {
   node.names<-paste("Node",c(1:nodes),sep=" ")
-  c.mat<-matrix(runif(length(node.names)^2)<con.frac,length(node.names),length(node.names))
+  c.mat<-matrix(runif(length(node.names)^2),length(node.names),length(node.names))
+  
+  c.mat<-c.mat<con.frac
   colnames(c.mat)<-node.names
   rownames(c.mat)<-node.names
   g<-graph.adjacency(c.mat,mode="directed")

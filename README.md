@@ -8,6 +8,9 @@ Shows the graph rendering itself using the built-in plot.igraph function, it is 
 ### Slides
 Shows the presentation itself in an iframe. Some browsers do not like this, in which case just use the source in the next panel.
 
+### Slide Positions
+The positions and details for the slides since particularly Z coordinates are tough to visualize.
+
 ### Source
 The source code for the presentation, since the iframe ```srcdoc```, makes it pretty un-readable. The formatting is ugly, if I find a pretty.html function somewhere, I'll use it.
 

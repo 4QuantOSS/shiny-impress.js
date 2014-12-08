@@ -1,16 +1,17 @@
-
 shinyServer(function(input, output) {
   get.graph<-reactive({
     make.random.graph(nodes=input$slide_count,con.frac=input$con_frac/100)
   })
+  
   get.layout<-reactive({
     gpos<-layout.fcns[[input$layout]](get.graph())
     if(ncol(gpos)<3) {
-      cbind(gpos,gpos[,1])
+      cbind(gpos,0*gpos[,1])
     } else {
       gpos
     }
   })
+  
   get.slides<-reactive({
     slide.names<-V(get.graph())$name
     slide.pos<-get.layout()
