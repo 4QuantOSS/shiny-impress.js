@@ -13,7 +13,7 @@ Shows the presentation itself in an iframe. Some browsers do not like this, in w
 ![Grid3D](Overview.png)
 
 - Sphere Layout
-![Sphere](Sphere.png)
+![Sphere](Sphere_Layout.png)
 
 - Circular Layout
 
