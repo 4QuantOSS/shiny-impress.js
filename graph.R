@@ -1,5 +1,22 @@
 library(igraph)
 
+make.random.ccm<-function(nodes=10,con.frac=0.5) {
+  node.names<-paste("Slide",c(1:nodes),sep=" ")
+  c.mat<-matrix(runif(length(node.names)^2),length(node.names),length(node.names))
+  c.mat<-c.mat<con.frac
+  colnames(c.mat)<-node.names
+  rownames(c.mat)<-node.names
+  c.mat
+}
+
+ccm.fcns<-new.env()
+ccm.fcns$Random<-make.random.ccm
+ccm.fcns$Full<-function(n,ignore) get.adjacency(graph.full(n,T))
+ccm.fcns$Lattice<-function(n,ignore) get.adjacency(graph.lattice(n,directed=T))
+ccm.fcns$Tree<-function(n,ignore) get.adjacency(graph.tree(n,T))
+ccm.fcns$Ring<-function(n,ignore) get.adjacency(graph.ring(n,T))
+ccm.fcns$FullCitation<-function(n,ignore) get.adjacency(graph.full.citation(n,T))
+
 layout.fcns<-new.env()
 layout.fcns$Auto<-layout.auto
 layout.fcns$Random<-layout.random
@@ -19,11 +36,9 @@ draw.graph<-function(g,layout.fcn) {
   plot(g,layout=layout.fcn)
 }
 
-make.random.graph<-function(nodes=10,con.frac=0.5) {
-  node.names<-paste("Node",c(1:nodes),sep=" ")
-  c.mat<-matrix(runif(length(node.names)^2),length(node.names),length(node.names))
-  
-  c.mat<-c.mat<con.frac
+
+make.graph<-function(c.mat) {
+  node.names<-paste("Slide",c(1:nrow(c.mat)),sep=" ")
   colnames(c.mat)<-node.names
   rownames(c.mat)<-node.names
   g<-graph.adjacency(c.mat,mode="directed")

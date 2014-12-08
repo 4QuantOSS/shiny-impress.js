@@ -42,13 +42,15 @@ make.style.text<-function(width=150,height=150,font=48) {
 # To be called from server.R
 renderImpress <- function(slides.df,use.iframe=T,width="400px", height="400px",slide.width=200,slide.height=200,font.size=24,spacing=1) {
   slides.data<-lapply(as.list(1:dim(slides.df)[1]), function(x) slides.df[x[1],])
-  slide.fun<-function(x,y,z,scale,angle,content) 
+  slide.fun<-function(x,y,z,scale,angle,content,angle.x=0,angle.y=0) 
     div(class="step slide","data-x"=x,"data-y"=y,"data-z"=z,
-        "data-rotate"=angle,"data-scale"=scale,
-        h2(content),tags$li(tags$ul("Interesting"),tags$ul(content)))
-  overview.slide<-div(class="step","data-x"=0,"data-y"=0,"data-scale"=spacing*nrow(slides.df))
+        "data-rotate-z"=angle,"data-rotate-x"=angle.x,"data.rotate.y"=angle.y,"data-scale"=scale,
+        h2(content),tags$ul(tags$li("Stuff"),tags$li(paste("More about",content))))
+  overview.slide<-div(class="step","data-x"=0,"data-y"=0,"data-scale"=spacing/2*nrow(slides.df))
   
-  slides<-lapply(slides.data,function(cslide) slide.fun(cslide$x,cslide$y,cslide$z,cslide$scale,cslide$angle,cslide$content))
+  slides<-lapply(slides.data,function(cslide) slide.fun(cslide$x,cslide$y,cslide$z,
+                                                        cslide$scale,cslide$angle,cslide$content,
+                                                        angle.x=cslide$angle.x,angle.y=cslide$angle.y))
   nslides<-list()
   nslides[[1]]<-overview.slide
   nslides[c(2:(length(slides)+1))]<-slides

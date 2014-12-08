@@ -10,6 +10,7 @@ shinyUI(pageWithSidebar(
     tabsetPanel(
       tabPanel("Overview",includeMarkdown("README.md")),
       tabPanel("Graph",
+               selectInput('ccm','Graph Generation:',ls(ccm.fcns),selected="Random"),
                selectInput('layout','Layout Type:',ls(layout.fcns),selected="Grid3D"),
                sliderInput('con_frac', 'Connectivity (%)', min=0, max=100,value=35),
                plotOutput('igraph_plot')
@@ -26,7 +27,7 @@ shinyUI(pageWithSidebar(
       tabPanel("Slide Positions",
                dataTableOutput("slide_positions")),
       tabPanel("Source Code",
-               h3(textOutput("sourcecode"))
+               verbatimTextOutput("sourcecode")
                )
     )
   )

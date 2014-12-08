@@ -1,6 +1,10 @@
 shinyServer(function(input, output) {
+  get.ccm<-reactive({
+    ccm.fcns[[input$ccm]](input$slide_count,input$con_frac/100)
+  })
+  
   get.graph<-reactive({
-    make.random.graph(nodes=input$slide_count,con.frac=input$con_frac/100)
+    make.graph(get.ccm())
   })
   
   get.layout<-reactive({
@@ -34,8 +38,10 @@ shinyServer(function(input, output) {
     data.frame(x=xpos,
                y=ypos,
                z=zpos,
-               scale=1+runif(input$slide_count,min=-1,max=1)*input$scale_noise/100,
+               scale=1+runif(input$slide_count,min=-1,max=5)*input$scale_noise/100,
                angle=runif(input$slide_count,min=-180,max=180)*input$angle_noise/100,
+               angle.x=runif(input$slide_count,min=-180,max=180)*input$angle_noise/100,
+               angle.y=runif(input$slide_count,min=-180,max=180)*input$angle_noise/100,
                content=slide.names)
   })
   output$preview <- renderUI({
