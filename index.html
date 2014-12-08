@@ -1,36 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Shiny-impress.js : A Shiny-based demo showing how to use the igraph library of R to make impress.js/jmpress presentations">
+    <title>Shiny-impress.js by 4Quant</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <title>Shiny-impress.js</title>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/4Quant/shiny-impress.js">View on GitHub</a>
-
-          <h1 id="project_title">Shiny-impress.js</h1>
-          <h2 id="project_tagline">A Shiny-based demo showing how to use the igraph library of R to make impress.js/jmpress presentations</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/4Quant/shiny-impress.js/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/4Quant/shiny-impress.js/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+    <div class="wrapper">
+      <header>
+        <h1>Shiny-impress.js</h1>
+        <p>A Shiny-based demo showing how to use the igraph library of R to make impress.js/jmpress presentations</p>
+        <p class="view"><a href="https://github.com/4Quant/shiny-impress.js">View the Project on GitHub <small>4Quant/shiny-impress.js</small></a></p>
+        <ul>
+          <li><a href="https://github.com/4Quant/shiny-impress.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/4Quant/shiny-impress.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/4Quant/shiny-impress.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
         <h2>
 <a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h2>
 
@@ -55,6 +51,20 @@
 <p>The source code for the presentation, since the iframe <code>srcdoc</code>, makes it pretty un-readable. The formatting is ugly, if I find a pretty.html function somewhere, I'll use it.</p>
 
 <h2>
+<a id="links" class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+
+<p>The original repository is located at <a href="http://4quant.github.io/shiny-impress.js">http://4quant.github.io/shiny-impress.js</a> and the live demo can be found at ShinyApps.io at <a href="https://4quant.shinyapps.io/gimpress/">https://4quant.shinyapps.io/gimpress/</a></p>
+
+<h3>
+<a id="run-it-yourself" class="anchor" href="#run-it-yourself" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run it yourself?</h3>
+
+<p>Install R and the Shiny package and run</p>
+
+<pre><code>library(shiny)
+runGitHub("4Quant/shiny-impress.js")
+</code></pre>
+
+<h2>
 <a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
 
 <p>This project took advantage of the great tools developed at </p>
@@ -66,15 +76,11 @@
 </ul>
       </section>
     </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Shiny-impress.js maintained by <a href="https://github.com/4Quant">4Quant</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
+    <footer>
+      <p>Project maintained by <a href="https://github.com/4Quant">4Quant</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -85,7 +91,6 @@
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-
 
   </body>
 </html>
