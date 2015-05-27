@@ -4,28 +4,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Shiny-impress.js by 4Quant</title>
-
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
   <body>
-    <div class="wrapper">
+
       <header>
         <h1>Shiny-impress.js</h1>
         <p>A Shiny-based demo showing how to use the igraph library of R to make impress.js/jmpress presentations</p>
-        <p class="view"><a href="https://github.com/4Quant/shiny-impress.js">View the Project on GitHub <small>4Quant/shiny-impress.js</small></a></p>
-        <ul>
-          <li><a href="https://github.com/4Quant/shiny-impress.js/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/4Quant/shiny-impress.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/4Quant/shiny-impress.js">View On <strong>GitHub</strong></a></li>
-        </ul>
       </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/4Quant/shiny-impress.js" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/4Quant/shiny-impress.js/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/4Quant/shiny-impress.js/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
       <section>
         <h2>
 <a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h2>
@@ -46,6 +58,11 @@
 <p>Shows the presentation itself in an iframe. Some browsers do not like this, in which case just use the source in the next panel.</p>
 
 <h3>
+<a id="slide-positions" class="anchor" href="#slide-positions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Slide Positions</h3>
+
+<p>The positions and details for the slides since particularly Z coordinates are tough to visualize.</p>
+
+<h3>
 <a id="source" class="anchor" href="#source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source</h3>
 
 <p>The source code for the presentation, since the iframe <code>srcdoc</code>, makes it pretty un-readable. The formatting is ugly, if I find a pretty.html function somewhere, I'll use it.</p>
@@ -53,7 +70,7 @@
 <h2>
 <a id="links" class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
 
-<p>The original repository is located at <a href="http://4quant.github.io/shiny-impress.js">http://4quant.github.io/shiny-impress.js</a> and the live demo can be found at ShinyApps.io at <a href="https://4quant.shinyapps.io/gimpress/">https://4quant.shinyapps.io/gimpress/</a></p>
+<p>The original repository is located at <a href="http://4quant.github.io/shiny-impress.js">http://4quant.github.io/shiny-impress.js</a></p>
 
 <h3>
 <a id="run-it-yourself" class="anchor" href="#run-it-yourself" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run it yourself?</h3>
@@ -75,11 +92,11 @@ runGitHub("4Quant/shiny-impress.js")
 <li>and of course the RStudio Shiny documentation</li>
 </ul>
       </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/4Quant">4Quant</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/4Quant">4Quant</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
