@@ -1,79 +1,74 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>Shiny-impress.js by 4Quant</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Shiny-impress.js</h1>
+      <h2 class="project-tagline">A Shiny-based demo showing how to use the igraph library of R to make impress.js/jmpress presentations</h2>
+      <a href="https://github.com/4Quant/shiny-impress.js" class="btn">View on GitHub</a>
+      <a href="https://github.com/4Quant/shiny-impress.js/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/4Quant/shiny-impress.js/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-      <header>
-        <h1>Shiny-impress.js</h1>
-        <p>A Shiny-based demo showing how to use the igraph library of R to make impress.js/jmpress presentations</p>
-      </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/4Quant/shiny-impress.js" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/4Quant/shiny-impress.js/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/4Quant/shiny-impress.js/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
-        <h2>
-<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h2>
-
-<p>A simple tool for using R's igraph libraries to automatically generate impress.js presentations. The idea is that many of these style presentations are based on trees or graphs and R already has very good tools for coming up with different layouts for these trees.</p>
+    <section class="main-content">
+      <h1>
+<a id="guide" class="anchor" href="#guide" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Guide</h1>
 
 <h2>
-<a id="tabs" class="anchor" href="#tabs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tabs</h2>
+<a id="using-the-shinyapp" class="anchor" href="#using-the-shinyapp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using the ShinyApp</h2>
+
+<p>Complex graphs can be difficult to visualize and present; the idea of the tool is to make their layout and visualization easy using R, Shiny, and Jmpress. This tool uses the impress.js/jmpress.js framework to show slides arranged freely rather than the traditional stack or pile format. Rather than requiring positions for each slide to be manually entered we use the <a href="http://www.igraph.org">igraph</a> toolbox in R to calculate the layout for the graph using different algorithms. The default shows a random graph with a 3D Grid layout.
+To get started you setup the size and number of slides involved using the left panel.</p>
 
 <h3>
-<a id="graph" class="anchor" href="#graph" aria-hidden="true"><span class="octicon octicon-link"></span></a>Graph</h3>
+<a id="graph" class="anchor" href="#graph" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Graph</h3>
 
-<p>Shows the graph rendering itself using the built-in plot.igraph function, it is pretty boring, but shows the general layout.</p>
-
-<h3>
-<a id="slides" class="anchor" href="#slides" aria-hidden="true"><span class="octicon octicon-link"></span></a>Slides</h3>
-
-<p>Shows the presentation itself in an iframe. Some browsers do not like this, in which case just use the source in the next panel.</p>
+<p>The "Graph" tab can then be used to configure the "Graph Generation" and "Layout Type". The generation is how the vertices are connected together. The layout is the algorithm used to position the vertices in space (2D or 3D). The final parameter "Connectivity (%)" is for choosing in the case of Random graphs how many edges are expected.</p>
 
 <h3>
-<a id="slide-positions" class="anchor" href="#slide-positions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Slide Positions</h3>
+<a id="slides" class="anchor" href="#slides" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slides</h3>
 
-<p>The positions and details for the slides since particularly Z coordinates are tough to visualize.</p>
+<p>Shows the presentation itself in an iframe. Some browsers do not like this, in which case just use the source in the last panel.</p>
+
+<ul>
+<li>Standard View </li>
+</ul>
+
+<p><img src="Overview.png" alt="Grid3D"></p>
+
+<ul>
+<li><p>Sphere Layout
+<img src="Sphere_Layout.png" alt="Sphere"></p></li>
+<li><p>Circular Layout</p></li>
+</ul>
+
+<p><img src="Circle.png" alt="Circle"></p>
 
 <h3>
-<a id="source" class="anchor" href="#source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source</h3>
+<a id="slide-positions" class="anchor" href="#slide-positions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide Positions</h3>
 
-<p>The source code for the presentation, since the iframe <code>srcdoc</code>, makes it pretty un-readable. The formatting is ugly, if I find a pretty.html function somewhere, I'll use it.</p>
+<p>The positions and details for the slides positioned based on the graph.</p>
+
+<h3>
+<a id="source" class="anchor" href="#source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Source</h3>
+
+<p>The source code for the presentation, since the iframe <code>srcdoc</code>, makes it pretty un-readable. The formatting is not yet nice, if I find a pretty.html function somewhere, I'll use it.</p>
 
 <h2>
-<a id="links" class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+<a id="links" class="anchor" href="#links" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Links</h2>
 
-<p>The original repository is located at <a href="http://4quant.github.io/shiny-impress.js">http://4quant.github.io/shiny-impress.js</a></p>
+<p>The original repository is located at <a href="http://4quant.github.io/shiny-impress.js">http://4quant.github.io/shiny-impress.js</a> and the live demo can be found at ShinyApps.io at <a href="https://4quant.shinyapps.io/gimpress/">https://4quant.shinyapps.io/gimpress/</a></p>
 
 <h3>
-<a id="run-it-yourself" class="anchor" href="#run-it-yourself" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run it yourself?</h3>
+<a id="run-it-yourself" class="anchor" href="#run-it-yourself" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run it yourself?</h3>
 
 <p>Install R and the Shiny package and run</p>
 
@@ -81,24 +76,15 @@
 runGitHub("4Quant/shiny-impress.js")
 </code></pre>
 
-<h2>
-<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/4Quant/shiny-impress.js">Shiny-impress.js</a> is maintained by <a href="https://github.com/4Quant">4Quant</a>.</span>
 
-<p>This project took advantage of the great tools developed at </p>
-
-<ul>
-<li><a href="http://jmpressjs.github.io/jmpress.js/#/home">http://jmpressjs.github.io/jmpress.js/#/home</a></li>
-<li><a href="http://wmh.github.io/circular-slides-generator/">http://wmh.github.io/circular-slides-generator/</a></li>
-<li>and of course the RStudio Shiny documentation</li>
-</ul>
-      </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/4Quant">4Quant</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-              <script type="text/javascript">
+
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
